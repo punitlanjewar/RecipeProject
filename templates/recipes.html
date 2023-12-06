@@ -1,0 +1,45 @@
+{% extends 'base.html' %} <!-- it will inherit the base html file -->
+
+{% block content %}
+    <div class="containter mt-5">
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h3 align="center">Add Recipe</h3>
+            <hr>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
+                <input type="text" required class="form-control" name="recipe_name">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Recipe Description</label>
+                <textarea class="form-control" required name="recipe_description"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Recipe Description</label>
+                <input type="file" class="form-control" name="recipe_image">
+              </div>
+                <button type="submit" class="btn btn-success">Add Recipe</button>
+          </form>
+          <br><h2 align="center" class="label1"><b>Recipies</b></h2><br>
+    <table align="center" class="table table-dark table-striped">
+        <tr>
+            <th>Sr.No.</th>
+            <th>Recipe Name</th>
+            <th>Recipe Description</th>
+            <th>Recipe Image</th>
+            <th>Actions</th>
+        </tr>
+        {% for i in recipe_data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.recipe_name }}</td>
+                <td>{{ i.recipe_description }}</td>
+                <td><img src="/media/{{ i.recipe_image }}" style="height: 200px;"></td>
+                <td><a href="{% url 'delete-recipe' i.id %}" class="btn btn-danger m-2">Delete</a>
+                <a href="{% url 'update-recipe' i.id %}" class="btn btn-success">Update</a></td>
+
+            </tr>
+        {% endfor %}
+    </table>        
+    </div>
+{% endblock %}
