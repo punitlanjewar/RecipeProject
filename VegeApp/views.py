@@ -19,7 +19,9 @@ def update_recipe(request, id):
         recipe_data.recipe_description = request.POST['recipe_description']
         recipe_data.recipe_image = request.FILES.get('recipe_image')
         recipe_data.save()    
-    return render(request, 'updaterecipes.html', {'recipes': recipe_data})
+        return redirect('recipes')
+    else:
+        return render(request, 'updaterecipe.html', {'recipes': recipe_data})
 
 def delete_recipe(request, id):
     r1 = Recipe.objects.get(id=id)
