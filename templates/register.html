@@ -1,0 +1,29 @@
+{% extends 'base.html' %} <!-- it will inherit the base html file -->
+
+{% block content %}
+    <div class="containter mt-5">
+        <form class="col-4 mx-auto card p-3 shadow-lg" method="post" action="register">
+            {% csrf_token %}
+            <h3 align="center">Register</h3>
+            <hr>
+            <div class="mb-3">
+                <label class="form-label">First Name:</label>
+                <input type="text" required class="form-control" name="txtFirstName">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Last Name:</label>
+                <input type="text" required class="form-control" name="txtLastName">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Username:</label>
+                <input type="text" required class="form-control" name="txtUsername">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" required class="form-control" name="txtPassword">
+                <a href="{% url 'login' %}">Login Here</a>
+            </div>
+                <button type="submit" class="btn btn-outline-primary">Register</button>
+          </form>       
+    </div>
+{% endblock %}

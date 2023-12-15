@@ -21,6 +21,12 @@
                 <button type="submit" class="btn btn-success">Add Recipe</button>
           </form>
           <br><h2 align="center" class="label1"><b>Recipies</b></h2><br>
+          <form>
+            <div class="mb-3 mx-auto col-6">
+            <input class="form-control mb-2" name="SearchBox" type="search" placeholder="Search">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+        </div>
+        </form>  
     <table align="center" class="table table-dark table-striped">
         <tr>
             <th>Sr.No.</th>
@@ -34,7 +40,7 @@
                 <td>{{ forloop.counter }}</td>
                 <td>{{ i.recipe_name }}</td>
                 <td>{{ i.recipe_description }}</td>
-                <td><img src="/media/{{ i.recipe_image }}" style="height: 200px;"></td>
+                <td><img src="/media/{{ i.recipe_image }}" style="height: 100px;"></td>
                 <td><a href="{% url 'delete-recipe' i.id %}" class="btn btn-danger m-2">Delete</a>
                 <a href="{% url 'update-recipe' i.id %}" class="btn btn-success">Update</a></td>
 

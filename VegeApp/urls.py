@@ -5,7 +5,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.recipes, name='recipes'),
+    path('', views.login_page, name='login'),
+    path('register', views.register_page, name='register'),
+    path('recipes', views.recipes, name='recipes'),
     path('delete-recipe/<int:id>', views.delete_recipe, name='delete-recipe'),
     path('update-recipe/<int:id>', views.update_recipe, name='update-recipe'),
 ]
